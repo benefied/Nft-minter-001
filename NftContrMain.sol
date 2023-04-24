@@ -7,14 +7,14 @@ import "@openzeppelin/contracts@4.8.3/token/ERC721/extensions/ERC721URIStorage.s
 import "@openzeppelin/contracts@4.8.3/access/Ownable.sol";
 import "@openzeppelin/contracts@4.8.3/utils/Counters.sol";
 
-contract Bennybrnt is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
+contract Bennybrnt is ERC721, ERC721Enumerable, ERC721URIStorage {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
 
     constructor() ERC721("Bennybrnt", "Bbnt") {}
 
-    function safeMint(address to, string memory uri) public onlyOwner {
+    function safeMint(address to, string memory uri) public {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
